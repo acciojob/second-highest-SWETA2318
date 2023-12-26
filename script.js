@@ -1,14 +1,21 @@
-//your JS code here. If required.
 function secondHighest(arr) {
-    if (arr.length <= 1 || new Set(arr).size === 1) {
+    if (arr.length < 2 || new Set(arr).size === 1) {
         return -Infinity;
     }
 
-    // Remove duplicates and sort the array in descending order
-    const uniqueSortedArr = Array.from(new Set(arr)).sort((a, b) => b - a);
+    // Find the maximum element
+    const max = Math.max(...arr);
 
-    // Return the second element in the sorted array
-    return uniqueSortedArr[1];
+    // Find the index of the maximum element
+    const maxIndex = arr.indexOf(max);
+
+    // Remove the maximum element from the array
+    arr.splice(maxIndex, 1);
+
+    // Find the second maximum element
+    const secondMax = Math.max(...arr);
+
+    return secondMax;
 }
 
 // Examples
